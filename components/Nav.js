@@ -32,15 +32,15 @@ const Nav = () => {
             </Button>
           </NextLink>
 
-          <NextLink href="/blog" passHref>
+          <NextLink href="/about" passHref>
             <Button
               as="a"
               variant="navBtn"
               aria-label="Blog"
               w="100%"
-              isActive={router.pathname.startsWith("/blog")}
+              isActive={router.pathname.startsWith("/about")}
             >
-              Blog
+              About
             </Button>
           </NextLink>
         </ButtonGroup>
@@ -92,9 +92,9 @@ const Nav = () => {
             </Button>
           </NextLink>
 
-          <NextLink href="/blog" passHref>
-            <Button as="a" variant="ghost" aria-label="Blog" my={3} w="100%">
-              Blog
+          <NextLink href="/about" passHref>
+            <Button as="a" variant="ghost" aria-label="About" my={3} w="100%">
+              About
             </Button>
           </NextLink>
         </Flex>

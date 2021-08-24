@@ -1,4 +1,11 @@
-import { Box, Container, Heading, Text, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Center,
+  Heading,
+  Text,
+  Button,
+} from "@chakra-ui/react";
 import NextImage from "next/image";
 
 import Layout from "components/Layout";
@@ -7,8 +14,12 @@ import Layout from "components/Layout";
 import abstractPic from "public/fpo_abstract1920.jpg";
 
 const IndexPage = () => (
-  <Layout>
-    <Container maxW="container.xl" textAlign="center">
+  <Layout
+    title="Home"
+    description="Description here for this page."
+    maxW="container.xl"
+  >
+    <Center flexDirection="column">
       <Heading my="8">Home Page</Heading>
       <Text mb="8">Welcome.</Text>
 
@@ -19,7 +30,7 @@ const IndexPage = () => (
         </Button>
       </Text>
 
-      <Box maxW="container.sm" mb="8" mx="auto">
+      <Box maxW="container.sm" mb="8" mx="auto" w="100%">
         <NextImage src={abstractPic} alt="Imported Image" layout="responsive" />
       </Box>
 
@@ -35,7 +46,7 @@ const IndexPage = () => (
         </Button>
       </Text>
 
-      <Box maxW="container.md" mb="8" mx="auto">
+      <Box maxW="container.md" mb="8" mx="auto" w="100%">
         <NextImage
           src="/fpo_image.jpg"
           alt="Test Image"
@@ -49,11 +60,12 @@ const IndexPage = () => (
       <Heading variant="primary" as="h3" mb="4">
         Here's an H3 Heading w/ "Primary" Variant Added
       </Heading>
+
       <Text>
         All of these colors (and more) are editable within the theme folder's
         files.
       </Text>
-    </Container>
+    </Center>
   </Layout>
 );
 

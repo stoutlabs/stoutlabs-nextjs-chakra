@@ -1,33 +1,50 @@
-import Head from "next/head";
-import { Flex } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { Container } from "@chakra-ui/react";
+import { NextSeo } from "next-seo";
 
-import Nav from "components/Nav";
-import ContentBox from "components/ContentBox";
-import { DarkModeSwitch } from "components/DarkModeSwitch";
-import { Footer } from "components/Footer";
+const MotionContainer = motion(Container);
+
+const variants = {
+  hidden: { opacity: 0, x: -40, y: 0 },
+  enter: { opacity: 1, x: 0, y: 0 },
+  exit: { opacity: 0, x: 0, y: -30 },
+};
 
 const Layout = props => {
-  const { title = "StoutLabs | NextJS and Chakra UI, with Preact", children } =
-    props;
+  const {
+    children,
+    title,
+    description,
+    images = [],
+    maxW = "container.lg",
+  } = props;
+
+  const pics =
+    images.length > 0
+      ? images.map(img => ({
+          url: `https://www.yoursite.com${img}`,
+        }))
+      : null;
 
   return (
-    <Flex id="site-main" direction="column" minHeight="100vh">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      {/* <DarkModeSwitch /> */}
-
-      <Nav />
-
-      <ContentBox py={4} flex="1">
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{ title, description, images: pics }}
+      />
+      <MotionContainer
+        maxW={maxW}
+        px={["4", "6"]}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+        transition={{ type: "linear" }}
+      >
         {children}
-      </ContentBox>
-
-      <Footer />
-    </Flex>
+      </MotionContainer>
+    </>
   );
 };
 
