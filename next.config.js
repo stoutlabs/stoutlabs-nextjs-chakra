@@ -1,7 +1,7 @@
 const withPreact = require("next-plugin-preact");
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
-module.exports = withPreact((phase, { defaultConfig }) => ({
+module.exports = withPreact({
   pageExtensions: ["js", "jsx", "md", "mdx"],
   webpack: (config, { defaultLoaders, isServer, webpack }) => {
     if (!isServer) {
@@ -19,4 +19,4 @@ module.exports = withPreact((phase, { defaultConfig }) => ({
 
     return config;
   },
-}));
+});
